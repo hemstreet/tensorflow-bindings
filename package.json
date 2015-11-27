@@ -1,0 +1,14 @@
+{
+  "name": "tensorflow-bindings",
+  "version": "1.0.0",
+  "description": "TensorFlow bindings in node",
+  "main": "tensorflow.js",
+  "author": "Jon Hemstreet",
+  "license": "MIT",
+  "keywords": [
+    "tensorflow",
+    "bindings",
+    "neural network",
+    "deep learning"
+  ]
+}
