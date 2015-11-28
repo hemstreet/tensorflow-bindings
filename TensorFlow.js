@@ -1,21 +1,40 @@
-'use strict';
+var Session = require('./lib/Session.js'),
+    Shell = require('./lib/Shell.js'),
+    Variables = require('./lib/Variables.js');
 
-var Session = require('Session.js'),
-    Variables = require('./utilities/Variables'),
-    variables = new Variables;
+var TensorFlow = function(config) {
 
-var TensorFlow = function() {};
+    this.config = config || {};
+    this.session = [];
 
-TensorFlow.prototype.constant = function(data) {
-    variables.constant(data);
+    this.shell = (config && config.shell) ? config.shell : new Shell();
+    this.variables = (config && config.variables) ? config.variables : new Variables({
+        shell: this.shell
+    });
+
 };
 
+TensorFlow.prototype.constant = function(variableName, value) {
+    this.variables.constant(variableName, value);
+};
+
+// @todo break out this code into lib/Session.js
+// use getters for session retrieval
 TensorFlow.prototype.Session = function(config) {
+
     if(!config) {
-        config = null
+        config = {};
     }
 
-    return new Session(config);
+    config.shell = this.shell;
+
+    var index = this.session.length,
+        sess = new Session(config);
+
+    this.session.push(sess);
+
+    return this.session[index];
+
 };
 
 module.exports = TensorFlow;

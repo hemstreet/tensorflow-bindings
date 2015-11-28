@@ -10,5 +10,9 @@
     "bindings",
     "neural network",
     "deep learning"
-  ]
+  ],
+  "dependencies": {
+    "python": "0.0.4",
+    "q": "^1.4.1",
+  }
 }
