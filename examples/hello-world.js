@@ -1,7 +1,7 @@
 var TensorFlow = require('../TensorFlow'),
     tf = new TensorFlow();
 
-    tf.constant("hello", 'Hello world');
+var hello = tf.constant('hello', 'Hello world');
 
 var sess = tf.Session();
 

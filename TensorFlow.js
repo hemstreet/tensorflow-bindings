@@ -15,7 +15,9 @@ var TensorFlow = function(config) {
 };
 
 TensorFlow.prototype.constant = function(variableName, value) {
-    this.variables.constant(variableName, value);
+    return this.variables.constant(variableName, value);
+
+
 };
 
 // @todo break out this code into lib/Session.js
